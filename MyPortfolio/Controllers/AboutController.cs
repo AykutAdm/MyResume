@@ -56,5 +56,11 @@ namespace MyPortfolio.Controllers
             _context.SaveChanges();
             return RedirectToAction("AboutList");
         }
+
+        public IActionResult DownloadCV()
+        {
+
+            return View();
+        }
     }
 }
