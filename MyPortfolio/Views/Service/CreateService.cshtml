@@ -1,6 +1,6 @@
-﻿@model Portfolio
+﻿@model Service
 @{
-    ViewData["Title"] = "CreatePortfolio";
+    ViewData["Title"] = "CreateService";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -8,12 +8,12 @@
     <div class="max-w-4xl mx-auto space-y-8">
         <!-- Page Heading -->
         <div class="flex items-center gap-4">
-            <a href="/Portfolio/PortfolioList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+            <a href="/Service/ServiceList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
                 <span class="material-symbols-outlined text-[20px]">arrow_back</span>
             </a>
             <div>
-                <h3 class="text-3xl font-black tracking-tight">Yeni Proje Ekle</h3>
-                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Proje bilgilerinizi ekleyin</p>
+                <h3 class="text-3xl font-black tracking-tight">Yeni Hizmet Ekle</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Hizmet bilgilerinizi ekleyin</p>
             </div>
         </div>
 
@@ -25,59 +25,48 @@
                     <!-- Title -->
                     <div>
                         <label for="title" class="block text-sm font-bold mb-2">
-                            Proje Başlığı
+                            Hizmet Başlığı
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
                                id="title"
                                asp-for="Title"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: E-Ticaret Web Sitesi"
+                               placeholder="Örn: Web Tasarım"
                                required />
                     </div>
 
-                    <!-- Image URL -->
+                    <!-- Icon URL -->
                     <div>
-                        <label for="imageUrl" class="block text-sm font-bold mb-2">
-                            Resim URL
+                        <label for="iconUrl" class="block text-sm font-bold mb-2">
+                            İkon URL
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
-                               id="imageUrl"
-                               asp-for="ImageUrl"
+                               id="iconUrl"
+                               asp-for="IconUrl"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: /images/project.jpg"
+                               placeholder="Örn: /images/icon.svg"
                                required />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Proje resminizin URL adresini girin
+                            Hizmet ikonunuzun URL adresini girin
                         </p>
                     </div>
 
-                    <!-- Category -->
+                    <!-- Description -->
                     <div>
-                        <label for="categoryId" class="block text-sm font-bold mb-2">
-                            Kategori
+                        <label for="description" class="block text-sm font-bold mb-2">
+                            Açıklama
                             <span class="text-red-500">*</span>
                         </label>
-                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryvalue, "Kategori Seçiniz", new { @class = "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all", @required = "required" })
+                        <textarea id="description"
+                                  asp-for="Description"
+                                  rows="6"
+                                  class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                                  placeholder="Hizmet hakkında detaylı bilgi..."
+                                  required></textarea>
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenizin kategorisini seçin
-                        </p>
-                    </div>
-
-                    <!-- Created Date -->
-                    <div>
-                        <label for="createdDate" class="block text-sm font-bold mb-2">
-                            Oluşturma Tarihi
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input type="date"
-                               id="createdDate"
-                               asp-for="CreatedDate"
-                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               required />
-                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenin oluşturulma tarihini seçin
+                            Hizmetiniz hakkında detaylı bilgi verin
                         </p>
                     </div>
 
@@ -88,7 +77,7 @@
                             <span class="material-symbols-outlined text-[20px]">check</span>
                             Kaydet
                         </button>
-                        <a href="/Portfolio/PortfolioList/"
+                        <a href="/Service/ServiceList/"
                            class="flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
                             <span class="material-symbols-outlined text-[20px]">close</span>
                             İptal
@@ -106,7 +95,7 @@
                 <div>
                     <h4 class="font-bold text-blue-900 dark:text-blue-300 mb-1">Bilgilendirme</h4>
                     <p class="text-sm text-blue-800 dark:text-blue-400">
-                        Tüm alanlar zorunludur. Proje bilgilerinizi eksiksiz doldurunuz.
+                        Tüm alanlar zorunludur. Hizmet bilgilerinizi eksiksiz doldurunuz.
                     </p>
                 </div>
             </div>

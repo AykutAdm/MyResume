@@ -1,6 +1,6 @@
 ﻿@model Portfolio
 @{
-    ViewData["Title"] = "CreatePortfolio";
+    ViewData["Title"] = "UpdatePortfolio";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -12,8 +12,8 @@
                 <span class="material-symbols-outlined text-[20px]">arrow_back</span>
             </a>
             <div>
-                <h3 class="text-3xl font-black tracking-tight">Yeni Proje Ekle</h3>
-                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Proje bilgilerinizi ekleyin</p>
+                <h3 class="text-3xl font-black tracking-tight">Proje Düzenleme Sayfası</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Proje bilgilerinizi düzenleyin</p>
             </div>
         </div>
 
@@ -21,7 +21,8 @@
         <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
             <div class="p-8">
                 <form method="post" class="space-y-6">
-
+                    <input type="hidden" asp-for="PortfolioId" />
+                    
                     <!-- Title -->
                     <div>
                         <label for="title" class="block text-sm font-bold mb-2">
@@ -29,11 +30,9 @@
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
-                               id="title"
                                asp-for="Title"
-                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: E-Ticaret Web Sitesi"
-                               required />
+                               id="title"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
                     </div>
 
                     <!-- Image URL -->
@@ -43,11 +42,9 @@
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
-                               id="imageUrl"
                                asp-for="ImageUrl"
-                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: /images/project.jpg"
-                               required />
+                               id="imageUrl"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
                             Proje resminizin URL adresini girin
                         </p>
@@ -59,7 +56,7 @@
                             Kategori
                             <span class="text-red-500">*</span>
                         </label>
-                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryvalue, "Kategori Seçiniz", new { @class = "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all", @required = "required" })
+                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryvalue, "Kategori Seçiniz", new { @class = "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" })
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
                             Projenizin kategorisini seçin
                         </p>
@@ -72,10 +69,9 @@
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="date"
-                               id="createdDate"
                                asp-for="CreatedDate"
-                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               required />
+                               id="createdDate"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
                             Projenin oluşturulma tarihini seçin
                         </p>

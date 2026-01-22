@@ -1,6 +1,6 @@
-﻿@model Portfolio
+﻿@model Testimonial
 @{
-    ViewData["Title"] = "CreatePortfolio";
+    ViewData["Title"] = "CreateTestimonial";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -8,12 +8,12 @@
     <div class="max-w-4xl mx-auto space-y-8">
         <!-- Page Heading -->
         <div class="flex items-center gap-4">
-            <a href="/Portfolio/PortfolioList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+            <a href="/Testimonial/TestimonialList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
                 <span class="material-symbols-outlined text-[20px]">arrow_back</span>
             </a>
             <div>
-                <h3 class="text-3xl font-black tracking-tight">Yeni Proje Ekle</h3>
-                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Proje bilgilerinizi ekleyin</p>
+                <h3 class="text-3xl font-black tracking-tight">Yeni Referans Ekle</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Referans bilgilerinizi ekleyin</p>
             </div>
         </div>
 
@@ -22,17 +22,31 @@
             <div class="p-8">
                 <form method="post" class="space-y-6">
 
-                    <!-- Title -->
+                    <!-- Name Surname -->
                     <div>
-                        <label for="title" class="block text-sm font-bold mb-2">
-                            Proje Başlığı
+                        <label for="nameSurname" class="block text-sm font-bold mb-2">
+                            Ad Soyad
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
-                               id="title"
-                               asp-for="Title"
+                               id="nameSurname"
+                               asp-for="NameSurname"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: E-Ticaret Web Sitesi"
+                               placeholder="Ad Soyad"
+                               required />
+                    </div>
+
+                    <!-- Work Title -->
+                    <div>
+                        <label for="workTitle" class="block text-sm font-bold mb-2">
+                            Unvan
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text"
+                               id="workTitle"
+                               asp-for="WorkTitle"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                               placeholder="Örn: Senior Developer"
                                required />
                     </div>
 
@@ -46,38 +60,46 @@
                                id="imageUrl"
                                asp-for="ImageUrl"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: /images/project.jpg"
+                               placeholder="Örn: /images/testimonial.jpg"
                                required />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Proje resminizin URL adresini girin
+                            Referans resminizin URL adresini girin
                         </p>
                     </div>
 
-                    <!-- Category -->
+                    <!-- Comment Detail -->
                     <div>
-                        <label for="categoryId" class="block text-sm font-bold mb-2">
-                            Kategori
+                        <label for="commentDetail" class="block text-sm font-bold mb-2">
+                            Yorum
                             <span class="text-red-500">*</span>
                         </label>
-                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryvalue, "Kategori Seçiniz", new { @class = "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all", @required = "required" })
+                        <textarea id="commentDetail"
+                                  asp-for="CommentDetail"
+                                  rows="6"
+                                  class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                                  placeholder="Referans yorumunu girin..."
+                                  required></textarea>
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenizin kategorisini seçin
+                            Referans yorumunu detaylı olarak girin
                         </p>
                     </div>
 
-                    <!-- Created Date -->
+                    <!-- Is Confirm -->
                     <div>
-                        <label for="createdDate" class="block text-sm font-bold mb-2">
-                            Oluşturma Tarihi
+                        <label for="isConfirm" class="block text-sm font-bold mb-2">
+                            Durum
                             <span class="text-red-500">*</span>
                         </label>
-                        <input type="date"
-                               id="createdDate"
-                               asp-for="CreatedDate"
-                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               required />
+                        <select asp-for="IsConfirm"
+                                id="isConfirm"
+                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                                required>
+                            <option value="">Durum Seçin</option>
+                            <option value="true">Aktif</option>
+                            <option value="false">Pasif</option>
+                        </select>
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenin oluşturulma tarihini seçin
+                            Referansın durumunu seçin
                         </p>
                     </div>
 
@@ -88,7 +110,7 @@
                             <span class="material-symbols-outlined text-[20px]">check</span>
                             Kaydet
                         </button>
-                        <a href="/Portfolio/PortfolioList/"
+                        <a href="/Testimonial/TestimonialList/"
                            class="flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
                             <span class="material-symbols-outlined text-[20px]">close</span>
                             İptal
@@ -106,7 +128,7 @@
                 <div>
                     <h4 class="font-bold text-blue-900 dark:text-blue-300 mb-1">Bilgilendirme</h4>
                     <p class="text-sm text-blue-800 dark:text-blue-400">
-                        Tüm alanlar zorunludur. Proje bilgilerinizi eksiksiz doldurunuz.
+                        Tüm alanlar zorunludur. Referans bilgilerinizi eksiksiz doldurunuz.
                     </p>
                 </div>
             </div>
@@ -114,3 +136,5 @@
 
     </div>
 </div>
+
+

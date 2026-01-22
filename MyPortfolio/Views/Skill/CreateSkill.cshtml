@@ -1,6 +1,6 @@
-﻿@model Portfolio
+﻿@model Skill
 @{
-    ViewData["Title"] = "CreatePortfolio";
+    ViewData["Title"] = "CreateSkill";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -8,12 +8,12 @@
     <div class="max-w-4xl mx-auto space-y-8">
         <!-- Page Heading -->
         <div class="flex items-center gap-4">
-            <a href="/Portfolio/PortfolioList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+            <a href="/Skill/SkillList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
                 <span class="material-symbols-outlined text-[20px]">arrow_back</span>
             </a>
             <div>
-                <h3 class="text-3xl font-black tracking-tight">Yeni Proje Ekle</h3>
-                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Proje bilgilerinizi ekleyin</p>
+                <h3 class="text-3xl font-black tracking-tight">Yeni Yetenek Ekle</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Yetenek bilgilerinizi ekleyin</p>
             </div>
         </div>
 
@@ -25,59 +25,33 @@
                     <!-- Title -->
                     <div>
                         <label for="title" class="block text-sm font-bold mb-2">
-                            Proje Başlığı
+                            Yetenek Adı
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
                                id="title"
                                asp-for="Title"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: E-Ticaret Web Sitesi"
+                               placeholder="Örn: C# Programlama"
                                required />
                     </div>
 
-                    <!-- Image URL -->
+                    <!-- Skill Value -->
                     <div>
-                        <label for="imageUrl" class="block text-sm font-bold mb-2">
-                            Resim URL
+                        <label for="skillValue" class="block text-sm font-bold mb-2">
+                            Yetenek Seviyesi (%)
                             <span class="text-red-500">*</span>
                         </label>
-                        <input type="text"
-                               id="imageUrl"
-                               asp-for="ImageUrl"
+                        <input type="number"
+                               id="skillValue"
+                               asp-for="SkillValue"
+                               min="0"
+                               max="100"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: /images/project.jpg"
+                               placeholder="Örn: 85"
                                required />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Proje resminizin URL adresini girin
-                        </p>
-                    </div>
-
-                    <!-- Category -->
-                    <div>
-                        <label for="categoryId" class="block text-sm font-bold mb-2">
-                            Kategori
-                            <span class="text-red-500">*</span>
-                        </label>
-                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryvalue, "Kategori Seçiniz", new { @class = "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all", @required = "required" })
-                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenizin kategorisini seçin
-                        </p>
-                    </div>
-
-                    <!-- Created Date -->
-                    <div>
-                        <label for="createdDate" class="block text-sm font-bold mb-2">
-                            Oluşturma Tarihi
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input type="date"
-                               id="createdDate"
-                               asp-for="CreatedDate"
-                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               required />
-                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenin oluşturulma tarihini seçin
+                            Yetenek seviyenizi 0-100 arasında bir değer olarak girin
                         </p>
                     </div>
 
@@ -88,7 +62,7 @@
                             <span class="material-symbols-outlined text-[20px]">check</span>
                             Kaydet
                         </button>
-                        <a href="/Portfolio/PortfolioList/"
+                        <a href="/Skill/SkillList/"
                            class="flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
                             <span class="material-symbols-outlined text-[20px]">close</span>
                             İptal
@@ -106,7 +80,7 @@
                 <div>
                     <h4 class="font-bold text-blue-900 dark:text-blue-300 mb-1">Bilgilendirme</h4>
                     <p class="text-sm text-blue-800 dark:text-blue-400">
-                        Tüm alanlar zorunludur. Proje bilgilerinizi eksiksiz doldurunuz.
+                        Tüm alanlar zorunludur. Yetenek bilgilerinizi eksiksiz doldurunuz. Yetenek seviyesi 0-100 arasında olmalıdır.
                     </p>
                 </div>
             </div>

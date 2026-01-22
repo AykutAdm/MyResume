@@ -51,10 +51,10 @@
     <aside class="w-64 flex-shrink-0 bg-white dark:bg-[#111618] border-r border-slate-200 dark:border-[#283539] flex flex-col h-screen">
         <div class="p-6 flex items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-background-dark font-bold text-xl">
-                JD
+                A
             </div>
             <div class="flex flex-col">
-                <h1 class="text-sm font-bold leading-tight">Senior .NET Dev</h1>
+                <h1 class="text-sm font-bold leading-tight">Junior .NET Dev</h1>
                 <p class="text-xs text-slate-500 dark:text-[#9db2b9]">Admin Portal</p>
             </div>
         </div>
@@ -62,6 +62,10 @@
             <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/Dashboard/Index/">
                 <span class="material-symbols-outlined text-[22px]">dashboard</span>
                 <span class="text-sm font-medium">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/Feature/FeatureList/">
+                <span class="material-symbols-outlined text-[22px]">star</span>
+                <span class="text-sm font-medium">Öne Çıkan</span>
             </a>
             <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/About/AboutList/">
                 <span class="material-symbols-outlined text-[22px]">person</span>
@@ -71,6 +75,10 @@
                 <span class="material-symbols-outlined text-[22px]">psychology</span>
                 <span class="text-sm font-medium">Yeteneklerim</span>
             </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/Service/ServiceList/">
+                <span class="material-symbols-outlined text-[22px]">room_service</span>
+                <span class="text-sm font-medium">Hizmetlerim</span>
+            </a>
             <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/Experience/ExperienceList/">
                 <span class="material-symbols-outlined text-[22px]">work</span>
                 <span class="text-sm font-medium">Deneyimlerim</span>
@@ -78,6 +86,10 @@
             <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary transition-colors" href="/Portfolio/PortfolioList/">
                 <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1">folder</span>
                 <span class="text-sm font-bold">Projelerim</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/Category/CategoryList/">
+                <span class="material-symbols-outlined text-[22px]">category</span>
+                <span class="text-sm font-medium">Kategoriler</span>
             </a>
             <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#1c2427] transition-colors" href="/Education/EducationList/">
                 <span class="material-symbols-outlined text-[22px]">school</span>
@@ -99,18 +111,15 @@
         </nav>
     </aside>
     <!-- Main Content Area -->
-    <main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark overflow-hidden">
+    <main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark h-screen overflow-hidden">
         <!-- Top Navbar -->
-        <header class="h-16 flex items-center justify-between px-8 bg-white dark:bg-[#111618] border-b border-slate-200 dark:border-[#283539] z-10">
+        <header class="h-16 flex-shrink-0 flex items-center justify-between px-8 bg-white dark:bg-[#111618] border-b border-slate-200 dark:border-[#283539] z-10">
             <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-primary">terminal</span>
                 <h2 class="text-lg font-bold tracking-tight">Developer Admin Panel</h2>
             </div>
             <div class="flex items-center gap-6">
-                <button class="relative p-2 text-slate-500 dark:text-[#9db2b9] hover:bg-slate-100 dark:hover:bg-[#283539] rounded-lg transition-colors">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="absolute top-2 right-2.5 w-2 h-2 bg-primary rounded-full border-2 border-white dark:border-[#111618]"></span>
-                </button>
+                @await Component.InvokeAsync("_AdminMessageNotificationComponentPartial")
                 <div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-[#283539]">
                     <div class="text-right hidden sm:block">
                         <p class="text-xs font-bold">John Doe</p>
@@ -121,7 +130,9 @@
             </div>
         </header>
         <!-- Scrollable Dashboard Content -->
-        @RenderBody()
+        <div class="flex-1 overflow-y-auto">
+            @RenderBody()
+        </div>
 
         <!-- Float Action Button for Mobile / Quick Access -->
         <div class="fixed bottom-8 right-8 lg:hidden">

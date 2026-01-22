@@ -1,6 +1,6 @@
-﻿@model Portfolio
+﻿@model Feature
 @{
-    ViewData["Title"] = "CreatePortfolio";
+    ViewData["Title"] = "CreateFeature";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -8,12 +8,12 @@
     <div class="max-w-4xl mx-auto space-y-8">
         <!-- Page Heading -->
         <div class="flex items-center gap-4">
-            <a href="/Portfolio/PortfolioList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
+            <a href="/Feature/FeatureList/" class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-[#3b4d54] hover:bg-slate-50 dark:hover:bg-[#1c2427] transition-colors">
                 <span class="material-symbols-outlined text-[20px]">arrow_back</span>
             </a>
             <div>
-                <h3 class="text-3xl font-black tracking-tight">Yeni Proje Ekle</h3>
-                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Proje bilgilerinizi ekleyin</p>
+                <h3 class="text-3xl font-black tracking-tight">Yeni Özellik Ekle</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Özellik bilgilerinizi ekleyin</p>
             </div>
         </div>
 
@@ -22,62 +22,99 @@
             <div class="p-8">
                 <form method="post" class="space-y-6">
 
+                    <!-- Name Surname -->
+                    <div>
+                        <label for="nameSurname" class="block text-sm font-bold mb-2">
+                            Ad Soyad
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text"
+                               id="nameSurname"
+                               asp-for="NameSurname"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                               placeholder="Ad Soyad"
+                               required />
+                    </div>
+
                     <!-- Title -->
                     <div>
                         <label for="title" class="block text-sm font-bold mb-2">
-                            Proje Başlığı
+                            Unvan
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
                                id="title"
                                asp-for="Title"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: E-Ticaret Web Sitesi"
+                               placeholder="Örn: Senior .NET Developer"
                                required />
                     </div>
 
                     <!-- Image URL -->
                     <div>
                         <label for="imageUrl" class="block text-sm font-bold mb-2">
-                            Resim URL
+                            Profil Resim URL
                             <span class="text-red-500">*</span>
                         </label>
                         <input type="text"
                                id="imageUrl"
                                asp-for="ImageUrl"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                               placeholder="Örn: /images/project.jpg"
+                               placeholder="Örn: /images/profile.jpg"
                                required />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Proje resminizin URL adresini girin
+                            Profil resminizin URL adresini girin
                         </p>
                     </div>
 
-                    <!-- Category -->
+                    <!-- Cover Image URL 1 -->
                     <div>
-                        <label for="categoryId" class="block text-sm font-bold mb-2">
-                            Kategori
+                        <label for="coverImageUrl1" class="block text-sm font-bold mb-2">
+                            Kapak Resim 1 URL
                             <span class="text-red-500">*</span>
                         </label>
-                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categoryvalue, "Kategori Seçiniz", new { @class = "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all", @required = "required" })
-                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenizin kategorisini seçin
-                        </p>
-                    </div>
-
-                    <!-- Created Date -->
-                    <div>
-                        <label for="createdDate" class="block text-sm font-bold mb-2">
-                            Oluşturma Tarihi
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input type="date"
-                               id="createdDate"
-                               asp-for="CreatedDate"
+                        <input type="text"
+                               id="coverImageUrl1"
+                               asp-for="CoverImageUrl1"
                                class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                               placeholder="Örn: /images/cover1.jpg"
                                required />
                         <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
-                            Projenin oluşturulma tarihini seçin
+                            İlk kapak resminizin URL adresini girin
+                        </p>
+                    </div>
+
+                    <!-- Cover Image URL 2 -->
+                    <div>
+                        <label for="coverImageUrl2" class="block text-sm font-bold mb-2">
+                            Kapak Resim 2 URL
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text"
+                               id="coverImageUrl2"
+                               asp-for="CoverImageUrl2"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                               placeholder="Örn: /images/cover2.jpg"
+                               required />
+                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
+                            İkinci kapak resminizin URL adresini girin
+                        </p>
+                    </div>
+
+                    <!-- Cover Image URL 3 -->
+                    <div>
+                        <label for="coverImageUrl3" class="block text-sm font-bold mb-2">
+                            Kapak Resim 3 URL
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text"
+                               id="coverImageUrl3"
+                               asp-for="CoverImageUrl3"
+                               class="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-[#3b4d54] bg-white dark:bg-[#1c2427] focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                               placeholder="Örn: /images/cover3.jpg"
+                               required />
+                        <p class="text-xs text-slate-500 dark:text-[#9db2b9] mt-2">
+                            Üçüncü kapak resminizin URL adresini girin
                         </p>
                     </div>
 
@@ -88,7 +125,7 @@
                             <span class="material-symbols-outlined text-[20px]">check</span>
                             Kaydet
                         </button>
-                        <a href="/Portfolio/PortfolioList/"
+                        <a href="/Feature/FeatureList/"
                            class="flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-[#1c2427] text-slate-700 dark:text-slate-300 rounded-lg font-bold text-sm hover:bg-slate-200 dark:hover:bg-[#283539] transition-colors">
                             <span class="material-symbols-outlined text-[20px]">close</span>
                             İptal
@@ -106,7 +143,7 @@
                 <div>
                     <h4 class="font-bold text-blue-900 dark:text-blue-300 mb-1">Bilgilendirme</h4>
                     <p class="text-sm text-blue-800 dark:text-blue-400">
-                        Tüm alanlar zorunludur. Proje bilgilerinizi eksiksiz doldurunuz.
+                        Tüm alanlar zorunludur. Özellik bilgilerinizi eksiksiz doldurunuz. Kapak resimleri slider'da kullanılacaktır.
                     </p>
                 </div>
             </div>

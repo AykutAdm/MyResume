@@ -18,9 +18,7 @@
     }
 
     .messages-container {
-        max-width: 1400px;
-        margin-left: 100px;
-        margin-top: 70px;
+        width: 100%;
     }
 
     .header-section {
@@ -244,7 +242,9 @@
         }
 </style>
 
-<div class="messages-container">
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-7xl mx-auto space-y-8">
+        <div class="messages-container" style="max-width: 100%; margin: 0; padding: 0;">
     <div class="header-section">
         <h1 class="page-title">Mesaj Listesi</h1>
         <button class="btn-new" onclick="window.location.href='@Url.Action("Create", "Messages")'">
@@ -326,6 +326,8 @@
                 }
             </tbody>
         </table>
+    </div>
+        </div>
     </div>
 </div>
 

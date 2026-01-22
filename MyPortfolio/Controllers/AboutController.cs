@@ -27,9 +27,9 @@ namespace MyPortfolio.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateAbout(About About)
+        public IActionResult CreateAbout(About about)
         {
-            _context.Abouts.Add(About);
+            _context.Abouts.Add(about);
             _context.SaveChanges();
             return RedirectToAction("AboutList");
         }
@@ -50,9 +50,9 @@ namespace MyPortfolio.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateAbout(About About)
+        public IActionResult UpdateAbout(About about)
         {
-            _context.Abouts.Update(About);
+            _context.Abouts.Update(about);
             _context.SaveChanges();
             return RedirectToAction("AboutList");
         }
