@@ -26,6 +26,8 @@ Bu proje, ASP.NET Core MVC, Entity Framework Core ve modern web geliştirme pren
 - HTML5
 - Tailwind CSS
 - JavaScript
+- StitchAI
+- Claude AI
 
 ---
 
