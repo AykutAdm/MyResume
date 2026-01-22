@@ -1,7 +1,7 @@
-﻿@model List<MyPortfolio.Entities.Experience>
+﻿@model List<Education>
 
 <style>
-    .experience-section {
+    .education-section {
         padding: 60px 0;
     }
 
@@ -25,12 +25,12 @@
             border-radius: 2px;
         }
 
-    .experience-timeline {
+    .education-timeline {
         position: relative;
         padding-left: 40px;
     }
 
-        .experience-timeline::before {
+        .education-timeline::before {
             content: '';
             position: absolute;
             left: 0;
@@ -40,7 +40,7 @@
             background: linear-gradient(180deg, #6366f1, #22d3ee);
         }
 
-    .experience-item {
+    .education-item {
         position: relative;
         margin-bottom: 48px;
         padding: 32px;
@@ -51,12 +51,12 @@
         border: 1px solid #f0f0f0;
     }
 
-        .experience-item:hover {
+        .education-item:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
         }
 
-        .experience-item::before {
+        .education-item::before {
             content: '';
             position: absolute;
             left: -52px;
@@ -69,7 +69,7 @@
             box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
         }
 
-    .experience-date {
+    .education-date {
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -83,49 +83,51 @@
         margin-bottom: 16px;
     }
 
-        .experience-date i {
+        .education-date i {
             font-size: 16px;
         }
 
-    .experience-company {
+    .education-title {
         font-size: 24px;
         font-weight: 700;
         color: #1a1a1a;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
         line-height: 1.3;
+    }
+
+    .education-university {
+        font-size: 18px;
+        font-weight: 600;
+        color: #6366f1;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
         gap: 8px;
     }
 
-        .experience-company i {
-            font-size: 24px;
-            color: #6366f1;
+        .education-university i {
+            font-size: 20px;
         }
 
-    .experience-role {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 12px;
-        background: rgba(30, 64, 175, 0.1);
-        border: 1px solid rgba(30, 64, 175, 0.2);
-        border-radius: 6px;
-        font-size: 15px;
-        font-weight: 600;
-        color: #1e40af;
-        margin-bottom: 16px;
-    }
-
-        .experience-role i {
-            font-size: 16px;
-        }
-
-    .experience-description {
+    .education-description {
         font-size: 15px;
         color: #666;
         line-height: 1.7;
         margin: 0;
+    }
+
+    .education-gpa {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1e40af;
+        margin-top: 12px;
     }
 
     @@media (max-width: 768px) {
@@ -133,46 +135,55 @@
             font-size: 32px;
         }
 
-        .experience-timeline {
+        .education-timeline {
             padding-left: 30px;
         }
 
-        .experience-item::before {
+        .education-item::before {
             left: -42px;
         }
 
-        .experience-company {
+        .education-title {
             font-size: 20px;
+        }
+
+        .education-university {
+            font-size: 16px;
         }
     }
 </style>
 
-<section id="experience" class="experience-section">
+<div class="education-section">
     <div class="container">
-        <h2 class="section-title text-center" style="display: block; width: 100%;">Deneyimlerim</h2>
+        <h2 class="section-title">Education</h2>
 
-        <div class="experience-timeline">
+        <div class="education-timeline">
             @foreach (var item in Model)
             {
-                <div class="experience-item">
-                    <div class="experience-date">
+                <div class="education-item">
+                    <div class="education-date">
                         <i class="ri-calendar-line"></i>
-                        @item.WorkDate
+                        @item.EducationDate.ToString("dd MMM yyyy")
                     </div>
 
-                    <h3 class="experience-company">
-                        <i class="ri-building-line"></i>
-                        @item.Title
-                    </h3>
+                    <h3 class="education-title">@item.Title</h3>
 
-                    <span class="experience-role">
-                        <i class="ri-briefcase-line"></i>
-                        @item.WorkTitle
+                    <div class="education-university">
+                        <i class="ri-building-line"></i>
+                        @item.Subtitle
+                    </div>
+
+                    <span class="education-gpa">
+                        <i class="ri-trophy-line"></i>
+                        @item.Description
                     </span>
 
-                    <p class="experience-description">@item.Description</p>
                 </div>
             }
         </div>
     </div>
-</section>
+</div>
+
+
+
+

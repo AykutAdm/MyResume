@@ -1,23 +1,36 @@
-﻿<div id="page-cover" class="page-cover">
-    <div class="page-cover-wrapper-fixed">
-        <div class="page-cover-bg">
-            <img src="https://www.ozenduvarkagidi.com.tr/images/urunler/100_doga-70-m-6934_1.jpg" />
-            @* <div class="overlay-inner bg-dark opacity-55"></div> *@
-        </div>
-        <div class="page-cover-wrap">
+﻿@model List<Feature>
 
-            <section id="home" class="d-flex min-vh-100">
-                <div class="container align-self-center text-white text-center">
-                    <div class="avatar avatar-xxl mb-6">
-                        <div class="avatar-shape avatar-shape-rounded bg-white mt-n2 mb-n2 mr-n2"></div>
-                        <img src="~/Dashboard/demo/images/avatar_small.jpg" alt="" class="avatar-img rounded-circle shadow-light">
-                    </div>
-                    <h1 class="mb-2 mb-lg-3">Aykut Adem</h1>
-                    <p class="lead mb-0">UI/UX Designer</p>
-                    <span class="cover-letter letter-xl text-white opacity-10">A</span>
+<div id="page-cover" class="page-cover">
+    @foreach (var item in Model)
+    {
+        <div class="page-cover-wrapper-fixed">
+            <div class="page-cover-bg-slider slider">
+                <div>
+                    <img src="@item.CoverImageUrl1" alt="" />
                 </div>
-            </section>
+                <div>
+                    <img src="@item.CoverImageUrl2" alt="" />
+                </div>
+                <div>
+                    <img src="@item.CoverImageUrl3" alt="" />
+                </div>
+                @* <div class="overlay-inner bg-dark opacity-55"></div> *@
+            </div>
+            <div class="page-cover-wrap">
 
+                <section id="home" class="d-flex min-vh-100">
+                    <div class="container align-self-center text-white text-center">
+                        <div class="avatar avatar-xxl mb-6">
+                            <div class="avatar-shape avatar-shape-rounded bg-white mt-n2 mb-n2 mr-n2"></div>
+                            <img src="@item.ImageUrl" alt="" class="avatar-img rounded-circle shadow-light">
+                        </div>
+                        <h1 class="mb-2 mb-lg-3">@item.NameSurname</h1>
+                        <p class="lead mb-0">@item.Title</p>
+                        <span class="cover-letter letter-xl text-white opacity-10">A</span>
+                    </div>
+                </section>
+
+            </div>
         </div>
-    </div>
+    }
 </div>

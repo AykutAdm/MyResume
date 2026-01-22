@@ -514,6 +514,7 @@ License: https://themeforest.net/licenses/standard
 			if( !$slider.hasClass('slick-initialized') ){
 				$slider.slick({
 					slidesToShow: 1,
+					autoplay: true,
 					infinite: true,
 					nextArrow: '<button type="button" class="slick-next"><i class="fas fa-angle-right"></i></button>',
 					prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-angle-left"></i></button>'

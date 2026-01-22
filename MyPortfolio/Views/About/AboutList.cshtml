@@ -1,0 +1,268 @@
+﻿@model List<About>
+@{
+    ViewData["Title"] = "AboutList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="flex-1 overflow-y-auto p-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <!-- Page Heading -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h3 class="text-3xl font-black tracking-tight">Hakkımda Listesi</h3>
+                <p class="text-slate-500 dark:text-[#9db2b9] mt-1">Hakkımda içeriklerinizi düzenleyebilir, yeni hakkımda ekleyebilirsiniz.</p>
+            </div>
+            <a href="/About/CreateAbout/" class="flex items-center gap-2 px-5 py-2.5 bg-primary text-background-dark rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                Yeni Hakkımda Ekle
+            </a>
+        </div>
+        <!-- Projects Table Container -->
+        <div class="bg-white dark:bg-[#111618] rounded-xl border border-slate-200 dark:border-[#3b4d54] overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <style>
+                    .modern-table-wrapper {
+                        background: rgba(255, 255, 255, 0.02);
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        border-radius: 16px;
+                        overflow: hidden;
+                    }
+
+                    .modern-table {
+                        width: 100%;
+                        border-collapse: separate;
+                        border-spacing: 0;
+                    }
+
+                        .modern-table thead th {
+                            padding: 16px 20px;
+                            text-align: left;
+                            font-size: 11px;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                            color: rgba(255, 255, 255, 0.5);
+                            background: rgba(255, 255, 255, 0.02);
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                            white-space: nowrap;
+                        }
+
+                            .modern-table thead th:first-child {
+                                padding-left: 24px;
+                            }
+
+                            .modern-table thead th:last-child {
+                                padding-right: 24px;
+                                text-align: right;
+                            }
+
+                        .modern-table tbody tr {
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                            transition: all 0.2s ease;
+                        }
+
+                            .modern-table tbody tr:hover {
+                                background: rgba(255, 255, 255, 0.03);
+                            }
+
+                            .modern-table tbody tr:last-child {
+                                border-bottom: none;
+                            }
+
+                        .modern-table tbody td {
+                            padding: 20px;
+                            vertical-align: middle;
+                            color: rgba(255, 255, 255, 0.8);
+                            font-size: 14px;
+                        }
+
+                            .modern-table tbody td:first-child {
+                                padding-left: 24px;
+                            }
+
+                            .modern-table tbody td:last-child {
+                                padding-right: 24px;
+                            }
+
+                    .id-badge {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 8px;
+                        background: rgba(99, 102, 241, 0.15);
+                        color: #a5b4fc;
+                        font-weight: 700;
+                        font-size: 13px;
+                        border: 1px solid rgba(99, 102, 241, 0.25);
+                    }
+
+                    .person-name {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+
+                    .person-icon {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 10px;
+                        background: linear-gradient(135deg, #22d3ee, #3b82f6);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 18px;
+                        color: white;
+                        flex-shrink: 0;
+                    }
+
+                    .person-text {
+                        font-weight: 600;
+                        color: #67e8f9;
+                        font-size: 15px;
+                    }
+
+                    .title-badge {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        padding: 6px 12px;
+                        border-radius: 6px;
+                        background: rgba(168, 85, 247, 0.15);
+                        color: #d8b4fe;
+                        font-size: 13px;
+                        font-weight: 600;
+                        border: 1px solid rgba(168, 85, 247, 0.25);
+                    }
+
+                    .description-text {
+                        font-size: 13px;
+                        color: rgba(255, 255, 255, 0.7);
+                        line-height: 1.6;
+                        max-width: 400px;
+                    }
+
+                    .image-preview {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 8px;
+                        object-fit: cover;
+                        border: 2px solid rgba(99, 102, 241, 0.25);
+                    }
+
+                    .action-buttons {
+                        display: flex;
+                        gap: 8px;
+                        justify-content: flex-end;
+                    }
+
+                    .action-btn {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        padding: 8px 14px;
+                        border-radius: 8px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        transition: all 0.2s;
+                        border: 1px solid transparent;
+                    }
+
+                        .action-btn.edit {
+                            background: rgba(99, 102, 241, 0.15);
+                            color: #a5b4fc;
+                            border-color: rgba(99, 102, 241, 0.25);
+                        }
+
+                            .action-btn.edit:hover {
+                                background: rgba(99, 102, 241, 0.25);
+                                transform: translateY(-2px);
+                            }
+
+                        .action-btn.delete {
+                            background: rgba(239, 68, 68, 0.15);
+                            color: #fca5a5;
+                            border-color: rgba(239, 68, 68, 0.25);
+                        }
+
+                            .action-btn.delete:hover {
+                                background: rgba(239, 68, 68, 0.25);
+                                transform: translateY(-2px);
+                            }
+
+                        .action-btn i {
+                            font-size: 16px;
+                        }
+                </style>
+
+                <div class="modern-table-wrapper">
+                    <table class="modern-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Resim</th>
+                                <th style="width: 280px;">Ad Soyad</th>
+                                <th style="width: 200px;">Unvan</th>
+                                <th>Açıklama</th>
+                                <th style="width: 200px;">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageUrl" alt="@item.NameSurname" class="image-preview" />
+                                    </td>
+                                    <td>
+                                        <div class="person-name">
+                                            <div class="person-icon">
+                                                <i class="ri-user-line"></i>
+                                            </div>
+                                            <div class="person-text">@item.NameSurname</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="title-badge">
+                                            <i class="ri-briefcase-line"></i>
+                                            @item.Title
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="description-text">
+
+                                            @item.Description
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="/About/UpdateAbout/@item.AboutId" class="action-btn edit">
+                                                <i class="ri-edit-line"></i>
+                                                Düzenle
+                                            </a>
+                                            <a href="/About/DeleteAbout/@item.AboutId" class="action-btn delete" onclick="return confirm('Are you sure you want to delete this item?')">
+                                                <i class="ri-delete-bin-line"></i>
+                                                Sil
+                                            </a>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-slate-50/30 dark:bg-[#1c2427]/30 border-t border-slate-200 dark:border-[#3b4d54] flex items-center justify-between">
+                <p class="text-xs text-slate-500 dark:text-[#9db2b9]">Toplam @Model.Count Hakkımda bulunmaktadır</p>
+                <div class="flex gap-2">
+                    <button class="px-3 py-1 rounded border border-slate-200 dark:border-[#283539] text-xs font-bold disabled:opacity-50" disabled="">Önceki</button>
+                    <button class="px-3 py-1 rounded border border-slate-200 dark:border-[#283539] text-xs font-bold hover:bg-slate-100 dark:hover:bg-[#283539]">Sonraki</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

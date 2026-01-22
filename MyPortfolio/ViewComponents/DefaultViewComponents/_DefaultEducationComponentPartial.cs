@@ -3,18 +3,18 @@ using MyPortfolio.Context;
 
 namespace MyPortfolio.ViewComponents.DefaultViewComponents
 {
-    public class _DefaultFeatureComponentPartial : ViewComponent
+    public class _DefaultEducationComponentPartial : ViewComponent
     {
         private readonly MyPortfolioContext _context;
 
-        public _DefaultFeatureComponentPartial(MyPortfolioContext context)
+        public _DefaultEducationComponentPartial(MyPortfolioContext context)
         {
             _context = context;
         }
 
         public IViewComponentResult Invoke()
         {
-            var values = _context.Features.ToList();
+            var values = _context.Educations.ToList();
             return View(values);
         }
     }

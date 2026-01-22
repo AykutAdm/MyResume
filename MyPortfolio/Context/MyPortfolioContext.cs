@@ -18,5 +18,8 @@ namespace MyPortfolio.Context
         public DbSet<Portfolio> Portfolios { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Feature> Features { get; set; }
     }
 }
