@@ -58,7 +58,8 @@ Bu proje, ASP.NET Core MVC, Entity Framework Core ve modern web geliştirme pren
   <img src="ProjectImages/Admin-10.png" alt="Admin Paneli-7" width="800" style="margin: 10px;">
   <img src="ProjectImages/Admin-11.png" alt="Admin Paneli-8" width="800" style="margin: 10px;">
   <img src="ProjectImages/Admin-12.png" alt="Admin Paneli-9" width="800" style="margin: 10px;">
-
+  <img src="ProjectImages/Admin-13.png" alt="Admin Paneli-10" width="800" style="margin: 10px;">
+  <img src="ProjectImages/Admin-14.png" alt="Admin Paneli-11" width="800" style="margin: 10px;">
 </div>
 
 ### 📌 Pdf Olarak İndirme
